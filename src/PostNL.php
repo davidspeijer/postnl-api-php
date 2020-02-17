@@ -823,7 +823,7 @@ class PostNL implements LoggerAwareInterface
             3 => true,
             4 => true,
         ],
-        $a6Orientation = 'P'
+        $a6Orientation = 'L'
     ) {
         if ($merge) {
             if ($printertype !== 'GraphicFile|PDF') {
@@ -868,6 +868,7 @@ class PostNL implements LoggerAwareInterface
                         $correction[1] = -0.5;
                         $pdf->rotateCounterClockWise();
                     } elseif ($a6Orientation === 'P' && $sizes['orientation'] === 'L') {
+                        $correction[0] = -130;
                         $pdf->rotateCounterClockWise();
                     }
                     $pdf->setSourceFile(StreamReader::createByString($pdfContent));
